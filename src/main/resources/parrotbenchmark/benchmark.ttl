@@ -1,0 +1,22 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix hobbit: <http://w3id.org/hobbit/vocab#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix debs: <http://project-hobbit.eu/resources/debs2017#> .
+
+<http://project-hobbit.eu/resources/debs2017/debsparrotbenchmark> a hobbit:Benchmark;
+    rdfs:label "DEBS GC parrot tutorial benchmark"@en;
+    rdfs:comment    "DEBS GC parrot tutorial benchmark"@en;
+    hobbit:imageName    "git.project-hobbit.eu:4567/rkaterinenko/debsparrotbenchmark";
+    hobbit:version "v1.1"@en;
+    hobbit:measuresKPI <http://www.example.org/exampleBenchmark/correctness> ;
+    hobbit:hasParameter <http://www.example.org/exampleBenchmark/messageCount>;
+    hobbit:hasAPI <http://www.example.org/exampleBenchmark/debsAPI> .
+
+<http://www.example.org/exampleBenchmark/correctness> a hobbit:KPI;
+    rdfs:range xsd:string.
+
+<http://www.example.org/exampleBenchmark/messageCount> a hobbit:ConfigurableParameter, hobbit:FeatureParameter;
+	rdfs:label "Amount of messages"@en;
+	rdfs:comment "Amount of messages"@en;
+	rdfs:range xsd:unsignedInt;
+    hobbit:defaultValue "11"^^xsd:unsignedInt .

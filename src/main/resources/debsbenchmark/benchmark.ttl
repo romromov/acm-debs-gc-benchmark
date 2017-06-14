@@ -1,0 +1,105 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix hobbit: <http://w3id.org/hobbit/vocab#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix debs: <http://project-hobbit.eu/resources/debs2017#> .
+
+<http://project-hobbit.eu/resources/debs2017/debsbenchmark> a hobbit:Benchmark;
+    rdfs:label "DEBS GC benchmark"@en;
+    rdfs:comment    "DEBS GC benchmark"@en;
+    hobbit:imageName    "git.project-hobbit.eu:4567/rkaterinenko/debsbenchmark";
+    hobbit:version "v1.0"@en;
+    hobbit:measuresKPI <http://www.debs2017.org/gc/debsKpi>;
+    hobbit:measuresKPI <http://www.debs2017.org/gc/averageLatencyNanos>;
+    hobbit:measuresKPI <http://www.debs2017.org/gc/throughputBytesPerSecond>;
+    hobbit:measuresKPI <http://www.debs2017.org/gc/terminationType>;
+
+    hobbit:hasParameter <http://www.debs2017.org/gc/dataPointCount>;
+    hobbit:hasParameter <http://www.debs2017.org/gc/benchmarkMode>;
+    hobbit:hasParameter <http://www.debs2017.org/gc/probabilityThreshold>;
+    hobbit:hasParameter <http://www.debs2017.org/gc/windowSize>;
+    hobbit:hasParameter <http://www.debs2017.org/gc/transitionsCount>;
+    hobbit:hasParameter <http://www.debs2017.org/gc/maxClusterIterations>;
+    hobbit:hasParameter <http://www.debs2017.org/gc/interval>;
+    hobbit:hasParameter <http://www.debs2017.org/gc/seed>;
+    hobbit:hasParameter <http://www.debs2017.org/gc/format>;
+    hobbit:hasParameter <http://www.debs2017.org/gc/machineCount>;
+    hobbit:hasParameter <http://www.debs2017.org/gc/timeoutMinutes>;
+    hobbit:hasAPI <http://www.example.org/exampleBenchmark/debsAPI>.
+
+<http://www.debs2017.org/gc/debsKpi> a hobbit:KPI;
+    rdfs:range xsd:string.
+
+<http://www.debs2017.org/gc/averageLatencyNanos> a hobbit:KPI;
+    rdfs:range xsd:int.
+
+<http://www.debs2017.org/gc/terminationType> a hobbit:KPI;
+    rdfs:range xsd:string.
+
+<http://www.debs2017.org/gc/throughputBytesPerSecond> a hobbit:KPI;
+    rdfs:range xsd:double.
+
+<http://www.debs2017.org/gc/benchmarkMode> a hobbit:ConfigurableParameter, hobbit:FeatureParameter;
+	rdfs:label "Benchmark mode. 'static' or 'dynamic:x:y' only"@en;
+	rdfs:label "Benchmark mode. 'static' or 'dynamic:x:y' only"@en;
+    rdfs:range xsd:string;
+    hobbit:defaultValue "static"^^xsd:string .
+
+<http://www.debs2017.org/gc/dataPointCount> a hobbit:ConfigurableParameter, hobbit:FeatureParameter;
+	rdfs:label "Amount of messages"@en;
+	rdfs:comment "Amount of messages"@en;
+	rdfs:range xsd:unsignedInt;
+    hobbit:defaultValue "63"^^xsd:unsignedInt .
+
+<http://www.debs2017.org/gc/probabilityThreshold> a hobbit:ConfigurableParameter, hobbit:FeatureParameter;
+    rdfs:label "Probability threshold"@en;
+    rdfs:comment "Probability threshold"@en;
+    rdfs:range xsd:double;
+    hobbit:defaultValue "0.005"^^xsd:double .
+
+<http://www.debs2017.org/gc/windowSize> a hobbit:ConfigurableParameter, hobbit:FeatureParameter;
+    rdfs:label "Window size"@en;
+    rdfs:comment "Window size"@en;
+    rdfs:range xsd:unsignedInt;
+    hobbit:defaultValue "10"^^xsd:unsignedInt .
+
+<http://www.debs2017.org/gc/transitionsCount> a hobbit:ConfigurableParameter, hobbit:FeatureParameter;
+    rdfs:label "Transitions count"@en;
+    rdfs:comment "Transitions count"@en;
+    rdfs:range xsd:unsignedInt;
+    hobbit:defaultValue "5"^^xsd:unsignedInt .
+
+<http://www.debs2017.org/gc/maxClusterIterations> a hobbit:ConfigurableParameter, hobbit:FeatureParameter;
+    rdfs:label "Max. clustering iterations"@en;
+    rdfs:comment "Max. clustering iterations"@en;
+    rdfs:range xsd:unsignedInt;
+    hobbit:defaultValue "50"^^xsd:unsignedInt .
+
+<http://www.debs2017.org/gc/interval> a hobbit:ConfigurableParameter, hobbit:FeatureParameter;
+    rdfs:label "Interval between measurements (nanos)"@en;
+    rdfs:comment "Interval between measurements (nanos)"@en;
+    rdfs:range xsd:unsignedInt;
+    hobbit:defaultValue "10"^^xsd:unsignedInt .
+
+<http://www.debs2017.org/gc/seed> a hobbit:ConfigurableParameter, hobbit:FeatureParameter;
+    rdfs:label "seed"@en;
+    rdfs:comment "seed"@en;
+    rdfs:range xsd:unsignedInt;
+    hobbit:defaultValue "123"^^xsd:unsignedInt .
+
+<http://www.debs2017.org/gc/format> a hobbit:ConfigurableParameter, hobbit:FeatureParameter;
+    rdfs:label "Output format.0-RDF, otherwise CSV"@en;
+    rdfs:comment "Output format.0-RDF, otherwise CSV"@en;
+    rdfs:range xsd:unsignedInt;
+    hobbit:defaultValue "0"^^xsd:unsignedInt .
+
+<http://www.debs2017.org/gc/machineCount> a hobbit:ConfigurableParameter, hobbit:FeatureParameter;
+    rdfs:label "Machine count. Uses 1000 machines metadata"@en;
+    rdfs:label "Machine count. Uses 1000 machines metadata"@en;
+    rdfs:range xsd:unsignedInt;
+    hobbit:defaultValue "1"^^xsd:unsignedInt .
+
+<http://www.debs2017.org/gc/timeoutMinutes> a hobbit:ConfigurableParameter, hobbit:FeatureParameter;
+    rdfs:label "Timeout (min.) -1 meaning no timeout"@en;
+    rdfs:comment "Timeout (min.) -1 meaning no timeout"@en;
+    rdfs:range xsd:int;
+    hobbit:defaultValue "-1"^^xsd:int .
